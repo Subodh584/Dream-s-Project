@@ -122,14 +122,25 @@ public class ViewTeachers extends JFrame implements ActionListener{
         }
     }
     private ImageIcon getImageIcon(byte[] byteImage){
+        // Handle null images (teachers without profile pictures)
+        if(byteImage == null || byteImage.length == 0) {
+            return new ImageIcon();  // Return empty icon
+        }
+        
         InputStream is = new ByteArrayInputStream(byteImage);
         BufferedImage bufferedImage = null;
          try {
              bufferedImage = ImageIO.read(is);
          } catch (IOException ex) {
              Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+             return new ImageIcon();  // Return empty icon on error
          }
          
+        // Handle case where ImageIO.read returns null
+        if(bufferedImage == null) {
+            return new ImageIcon();  // Return empty icon
+        }
+        
         ImageIcon icon = new ImageIcon(bufferedImage);
         Image i2 = icon.getImage().getScaledInstance(96 ,96 ,Image.SCALE_DEFAULT);
         ImageIcon i3 =  new ImageIcon(i2);

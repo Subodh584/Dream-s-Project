@@ -83,9 +83,14 @@ public class Admin extends JFrame implements ActionListener, WindowStateListener
            InputStream is = new ByteArrayInputStream(bytImage);
             try {
                 bufferedImage = ImageIO.read(is);
-                usericon = new JLabel(resizeImage(bufferedImage));
+                if(bufferedImage != null) {
+                    usericon = new JLabel(resizeImage(bufferedImage));
+                } else {
+                    usericon = new JLabel(new ImageIcon(ClassLoader.getSystemResource("javasemesterproject/icons/uploadPicIcon.png")));
+                }
             } catch (IOException ex) {
                 Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+                usericon = new JLabel(new ImageIcon(ClassLoader.getSystemResource("javasemesterproject/icons/uploadPicIcon.png")));
             }
         }
         else{
