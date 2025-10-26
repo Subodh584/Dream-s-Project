@@ -15,6 +15,8 @@ import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javasemesterproject.DBConnection;
@@ -85,33 +87,36 @@ public class ViewStudents extends JFrame implements ActionListener{
         DBConnection c1 = new DBConnection();
         try{
             String q = "select * from Student";
-            ResultSet rs = c1.s.executeQuery(q); 
+            ResultSet rs = c1.s.executeQuery(q);
             ResultSetMetaData rsmd = rs.getMetaData();
-            int    columnCount  =  rsmd.getColumnCount();
-            int    rowCount = 0;
-            while (rs.next())
-                rowCount++;
-            // The column count starts from 1
-            columnNames = new String[columnCount];
-            int CIndex = 1;
-            for(int in = 0 ; in < columnCount; in++) {
-              columnNames[in]  = rsmd.getColumnName(CIndex);
-              CIndex++;
-            }
-            data = new Object[rowCount][columnCount];
-            int row = 0;
-            rs.beforeFirst();
+            int columnCount = rsmd.getColumnCount();
+            
+            // Store results in list first (PostgreSQL doesn't support beforeFirst)
+            List<Object[]> rowList = new ArrayList<>();
             while (rs.next()) {
                 byte[] bytImage = null;
-                for (int c = 0 ; c < columnCount; c++) {
-                    if(columnNames[c].equalsIgnoreCase("picture")){
-                        bytImage = rs.getBytes(columnNames[c]);
-                        data[row][c] =  getImageIcon(bytImage);
+                Object[] row = new Object[columnCount];
+                for (int c = 0; c < columnCount; c++) {
+                    if(rsmd.getColumnName(c + 1).equalsIgnoreCase("picture")){
+                        bytImage = rs.getBytes(c + 1);
+                        row[c] = getImageIcon(bytImage);
                     }
                     else
-                        data[row][c] = rs.getString(columnNames[c]);
+                        row[c] = rs.getString(c + 1);
                 }
-                row++;
+                rowList.add(row);
+            }
+            
+            // Set column names
+            columnNames = new String[columnCount];
+            for(int i = 0; i < columnCount; i++) {
+                columnNames[i] = rsmd.getColumnName(i + 1);
+            }
+            
+            // Convert list to array
+            data = new Object[rowList.size()][columnCount];
+            for(int i = 0; i < rowList.size(); i++) {
+                data[i] = rowList.get(i);
             }
         }
         catch(SQLException e){

@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database Service
+  postgres:
+    image: postgres:15-alpine
+    container_name: elearning_postgres
+    environment:
+      POSTGRES_DB: ELearningSystem
+      POSTGRES_USER: elearning_user
+      POSTGRES_PASSWORD: elearning_password
+    ports:
+      - "5432:5432"
+    volumes:
+      # Mount SQL init scripts - automatically runs on first start
+      - ./init-db:/docker-entrypoint-initdb.d/
+      # Persist database data even after container stops
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - elearning-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U elearning_user -d ELearningSystem"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Java Application Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: elearning_app
+    environment:
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_NAME: ELearningSystem
+      DATABASE_USER: elearning_user
+      DATABASE_PASSWORD: elearning_password
+      JAVA_OPTS: "-Xmx1024m -Xms512m"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    volumes:
+      # Mount data directory for file storage
+      - app_data:/app/data
+    networks:
+      - elearning-network
+    restart: unless-stopped
+
+networks:
+  elearning-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
+  app_data:
+    driver: local

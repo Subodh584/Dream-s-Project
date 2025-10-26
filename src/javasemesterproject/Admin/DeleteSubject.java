@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import javasemesterproject.DBConnection;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -64,20 +66,20 @@ public class DeleteSubject extends JFrame implements ActionListener{
         String[] subjectsData = null;
         try{
             DBConnection c1 = new DBConnection();
-
             String q = "select * from Subjects";
-
+            
             ResultSet rs = c1.s.executeQuery(q);
-            int rowCount = 0;
-            while(rs.next())
-                rowCount++;
-            subjectsData = new String[rowCount];
-            rs.beforeFirst();
-            int i=0;
-            while(rs.next()){
-                subjectsData[i] = rs.getString("Name");
-                i++;
+            // Store results in a list first (PostgreSQL doesn't support beforeFirst)
+            java.util.List<String> subjectList = new java.util.ArrayList<>();
+            while(rs.next()) {
+                subjectList.add(rs.getString("Name"));
             }
+            
+            subjectsData = new String[subjectList.size()];
+            for(int i = 0; i < subjectList.size(); i++) {
+                subjectsData[i] = subjectList.get(i);
+            }
+            c1.Close();
         }catch(Exception e){
             e.printStackTrace();
         }

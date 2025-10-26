@@ -1,0 +1,123 @@
+time="2025-10-27T03:09:12+05:30" level=warning msg="/Users/user62/Desktop/DREAM's Project/E-Learning-System-Java-GUI-Application/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Network e-learning-system-java-gui-application_elearning-network  Creating
+ Network e-learning-system-java-gui-application_elearning-network  Created
+ Container elearning_postgres  Creating
+ Container elearning_postgres  Created
+ Container elearning_app  Creating
+ Container elearning_app  Created
+Attaching to elearning_app, elearning_postgres
+elearning_postgres  | 
+elearning_postgres  | PostgreSQL Database directory appears to contain a database; Skipping initialization
+elearning_postgres  | 
+elearning_postgres  | 2025-10-26 21:39:12.482 UTC [1] LOG:  starting PostgreSQL 15.14 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit
+elearning_postgres  | 2025-10-26 21:39:12.483 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+elearning_postgres  | 2025-10-26 21:39:12.483 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+elearning_postgres  | 2025-10-26 21:39:12.484 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+elearning_postgres  | 2025-10-26 21:39:12.486 UTC [29] LOG:  database system was shut down at 2025-10-26 21:39:11 UTC
+elearning_postgres  | 2025-10-26 21:39:12.488 UTC [1] LOG:  database system is ready to accept connections
+elearning_app       | E-Learning System starting...
+elearning_app       | Exception in thread "main" java.awt.HeadlessException: 
+elearning_app       | No X11 DISPLAY variable was set,
+elearning_app       | but this program performed an operation which requires it.
+elearning_app       | 	at java.desktop/java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:166)
+elearning_app       | 	at java.desktop/java.awt.Window.<init>(Window.java:553)
+elearning_app       | 	at java.desktop/java.awt.Frame.<init>(Frame.java:428)
+elearning_app       | 	at java.desktop/javax.swing.JFrame.<init>(JFrame.java:224)
+elearning_app       | 	at javasemesterproject.Main.<init>(Main.java:34)
+elearning_app       | 	at javasemesterproject.Main.main(Main.java:177)
+[Kelearning_app exited with code 1
+[Kelearning_app exited with code 1
+elearning_app       | E-Learning System starting...
+elearning_app       | Exception in thread "main" java.awt.HeadlessException: 
+elearning_app       | No X11 DISPLAY variable was set,
+elearning_app       | but this program performed an operation which requires it.
+elearning_app       | 	at java.desktop/java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:166)
+elearning_app       | 	at java.desktop/java.awt.Window.<init>(Window.java:553)
+elearning_app       | 	at java.desktop/java.awt.Frame.<init>(Frame.java:428)
+elearning_app       | 	at java.desktop/javax.swing.JFrame.<init>(JFrame.java:224)
+elearning_app       | 	at javasemesterproject.Main.<init>(Main.java:34)
+elearning_app       | 	at javasemesterproject.Main.main(Main.java:177)
+elearning_app       | E-Learning System starting...
+elearning_app       | Exception in thread "main" java.awt.HeadlessException: 
+elearning_app       | No X11 DISPLAY variable was set,
+elearning_app       | but this program performed an operation which requires it.
+elearning_app       | 	at java.desktop/java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:166)
+elearning_app       | 	at java.desktop/java.awt.Window.<init>(Window.java:553)
+elearning_app       | 	at java.desktop/java.awt.Frame.<init>(Frame.java:428)
+elearning_app       | 	at java.desktop/javax.swing.JFrame.<init>(JFrame.java:224)
+elearning_app       | 	at javasemesterproject.Main.<init>(Main.java:34)
+elearning_app       | 	at javasemesterproject.Main.main(Main.java:177)
+[Kelearning_app exited with code 1
+elearning_app       | E-Learning System starting...
+elearning_app       | Exception in thread "main" java.awt.HeadlessException: 
+elearning_app       | No X11 DISPLAY variable was set,
+elearning_app       | but this program performed an operation which requires it.
+elearning_app       | 	at java.desktop/java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:166)
+elearning_app       | 	at java.desktop/java.awt.Window.<init>(Window.java:553)
+elearning_app       | 	at java.desktop/java.awt.Frame.<init>(Frame.java:428)
+elearning_app       | 	at java.desktop/javax.swing.JFrame.<init>(JFrame.java:224)
+elearning_app       | 	at javasemesterproject.Main.<init>(Main.java:34)
+elearning_app       | 	at javasemesterproject.Main.main(Main.java:177)
+[Kelearning_app exited with code 1
+elearning_app       | E-Learning System starting...
+elearning_app       | Exception in thread "main" java.awt.HeadlessException: 
+elearning_app       | No X11 DISPLAY variable was set,
+elearning_app       | but this program performed an operation which requires it.
+elearning_app       | 	at java.desktop/java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:166)
+elearning_app       | 	at java.desktop/java.awt.Window.<init>(Window.java:553)
+elearning_app       | 	at java.desktop/java.awt.Frame.<init>(Frame.java:428)
+elearning_app       | 	at java.desktop/javax.swing.JFrame.<init>(JFrame.java:224)
+elearning_app       | 	at javasemesterproject.Main.<init>(Main.java:34)
+elearning_app       | 	at javasemesterproject.Main.main(Main.java:177)
+[Kelearning_app exited with code 1
+elearning_app       | E-Learning System starting...
+elearning_app       | Exception in thread "main" java.awt.HeadlessException: 
+elearning_app       | No X11 DISPLAY variable was set,
+elearning_app       | but this program performed an operation which requires it.
+elearning_app       | 	at java.desktop/java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:166)
+elearning_app       | 	at java.desktop/java.awt.Window.<init>(Window.java:553)
+elearning_app       | 	at java.desktop/java.awt.Frame.<init>(Frame.java:428)
+elearning_app       | 	at java.desktop/javax.swing.JFrame.<init>(JFrame.java:224)
+elearning_app       | 	at javasemesterproject.Main.<init>(Main.java:34)
+elearning_app       | 	at javasemesterproject.Main.main(Main.java:177)
+[Kelearning_app exited with code 1
+elearning_app       | E-Learning System starting...
+elearning_app       | Exception in thread "main" java.awt.HeadlessException: 
+elearning_app       | No X11 DISPLAY variable was set,
+elearning_app       | but this program performed an operation which requires it.
+elearning_app       | 	at java.desktop/java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:166)
+elearning_app       | 	at java.desktop/java.awt.Window.<init>(Window.java:553)
+elearning_app       | 	at java.desktop/java.awt.Frame.<init>(Frame.java:428)
+elearning_app       | 	at java.desktop/javax.swing.JFrame.<init>(JFrame.java:224)
+elearning_app       | 	at javasemesterproject.Main.<init>(Main.java:34)
+elearning_app       | 	at javasemesterproject.Main.main(Main.java:177)
+[Kelearning_app exited with code 1
+elearning_app       | E-Learning System starting...
+elearning_app       | Exception in thread "main" java.awt.HeadlessException: 
+elearning_app       | No X11 DISPLAY variable was set,
+elearning_app       | but this program performed an operation which requires it.
+elearning_app       | 	at java.desktop/java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:166)
+elearning_app       | 	at java.desktop/java.awt.Window.<init>(Window.java:553)
+elearning_app       | 	at java.desktop/java.awt.Frame.<init>(Frame.java:428)
+elearning_app       | 	at java.desktop/javax.swing.JFrame.<init>(JFrame.java:224)
+elearning_app       | 	at javasemesterproject.Main.<init>(Main.java:34)
+elearning_app       | 	at javasemesterproject.Main.main(Main.java:177)
+[Kelearning_app exited with code 1
+elearning_app       | E-Learning System starting...
+elearning_app       | Exception in thread "main" java.awt.HeadlessException: 
+elearning_app       | No X11 DISPLAY variable was set,
+elearning_app       | but this program performed an operation which requires it.
+elearning_app       | 	at java.desktop/java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:166)
+elearning_app       | 	at java.desktop/java.awt.Window.<init>(Window.java:553)
+elearning_app       | 	at java.desktop/java.awt.Frame.<init>(Frame.java:428)
+elearning_app       | 	at java.desktop/javax.swing.JFrame.<init>(JFrame.java:224)
+elearning_app       | 	at javasemesterproject.Main.<init>(Main.java:34)
+elearning_app       | 	at javasemesterproject.Main.main(Main.java:177)
+[Kelearning_app exited with code 1
+elearning_postgres  | 2025-10-26 21:40:06.226 UTC [1] LOG:  received fast shutdown request
+elearning_postgres  | 2025-10-26 21:40:06.227 UTC [1] LOG:  aborting any active transactions
+elearning_postgres  | 2025-10-26 21:40:06.229 UTC [1] LOG:  background worker "logical replication launcher" (PID 32) exited with exit code 1
+elearning_postgres  | 2025-10-26 21:40:06.230 UTC [27] LOG:  shutting down
+elearning_postgres  | 2025-10-26 21:40:06.231 UTC [27] LOG:  checkpoint starting: shutdown immediate
+elearning_postgres  | 2025-10-26 21:40:06.241 UTC [27] LOG:  checkpoint complete: wrote 30 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.004 s, total=0.012 s; sync files=7, longest=0.002 s, average=0.001 s; distance=129 kB, estimate=129 kB
+elearning_postgres  | 2025-10-26 21:40:06.244 UTC [1] LOG:  database system is shut down

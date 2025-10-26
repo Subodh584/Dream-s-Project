@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javasemesterproject.DBConnection;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -81,18 +83,19 @@ public class ViewCourses extends JFrame implements ActionListener{
             DBConnection c1 = new DBConnection();
             String q = "select Name From Subjects";
             
-            ResultSet rs = c1.s.executeQuery(q); 
-            int    rowCount = 0;
-            while (rs.next())
-                rowCount++;
-            subjects = new String[rowCount+1];
-            subjects[0] = "";
-            int row = 1;
-            rs.beforeFirst();
+            ResultSet rs = c1.s.executeQuery(q);
+            // Store results in a list first (PostgreSQL doesn't support beforeFirst)
+            java.util.List<String> subjectList = new java.util.ArrayList<>();
             while (rs.next()) {
-                subjects[row] = rs.getString("Name");
-                row++;
+                subjectList.add(rs.getString("Name"));
             }
+            
+            subjects = new String[subjectList.size() + 1];
+            subjects[0] = "";
+            for (int i = 0; i < subjectList.size(); i++) {
+                subjects[i + 1] = subjectList.get(i);
+            }
+            c1.Close();
         }
         catch(SQLException e){
             e.printStackTrace();
@@ -114,28 +117,28 @@ public class ViewCourses extends JFrame implements ActionListener{
             
             ResultSet rs = c1.s.executeQuery(q);
             ResultSetMetaData rsmd = rs.getMetaData();
-            int    columnCount  =  rsmd.getColumnCount();
-            int    rowCount = 0;
-            while (rs.next())
-                rowCount++;
-            // The column count starts from 1
-            columnNames = new String[columnCount];
-            int CIndex = 1;
-            for(int in = 0 ; in < columnCount; in++) {
-              columnNames[in]  = rsmd.getColumnLabel(CIndex);
-              CIndex++;
-            }
-            data = new String[rowCount][columnCount];
-            int row = 0;
-            rs.beforeFirst();
- 
+            int columnCount = rsmd.getColumnCount();
+            
+            // Store all rows in a list first (PostgreSQL doesn't support beforeFirst)
+            java.util.List<String[]> rowList = new java.util.ArrayList<>();
             while (rs.next()) {
-                int col = 0;
-                for (int c = 1 ; c < columnCount+1 ; c++) {
-                  data[row][col] = rs.getString(c);
-                  col++;
+                String[] row = new String[columnCount];
+                for (int c = 1; c <= columnCount; c++) {
+                    row[c - 1] = rs.getString(c);
                 }
-                row++;
+                rowList.add(row);
+            }
+            
+            // Set column names
+            columnNames = new String[columnCount];
+            for (int i = 0; i < columnCount; i++) {
+                columnNames[i] = rsmd.getColumnLabel(i + 1);
+            }
+            
+            // Convert list to array
+            data = new String[rowList.size()][columnCount];
+            for (int i = 0; i < rowList.size(); i++) {
+                data[i] = rowList.get(i);
             }
         }
         catch(SQLException e){

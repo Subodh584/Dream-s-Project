@@ -217,6 +217,23 @@ public class Teacher extends JFrame implements ActionListener, WindowStateListen
     }
         // This code use to resize image to fit lable
     public ImageIcon resizeImage(BufferedImage bufferedImage){
+        // Handle null image (teacher has no profile picture)
+        if(bufferedImage == null) {
+            try {
+                BufferedImage defaultImage = new BufferedImage(96, 96, BufferedImage.TYPE_INT_ARGB);
+                Graphics2D g2 = defaultImage.createGraphics();
+                g2.setColor(new Color(200, 200, 200));
+                g2.fillRect(0, 0, 96, 96);
+                g2.setColor(Color.BLACK);
+                g2.drawString("No Photo", 15, 50);
+                g2.dispose();
+                return new ImageIcon(defaultImage);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new ImageIcon();
+            }
+        }
+        
         int width = bufferedImage.getWidth();
         BufferedImage circleBuffer = new BufferedImage(width, width, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = circleBuffer.createGraphics();

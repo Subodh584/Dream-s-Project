@@ -1,0 +1,80 @@
+time="2025-10-27T03:07:29+05:30" level=warning msg="/Users/user62/Desktop/DREAM's Project/E-Learning-System-Java-GUI-Application/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+#1 [internal] load local bake definitions
+#1 reading from stdin 655B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.31kB done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/openjdk:17-slim
+#3 DONE 0.4s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 730B done
+#4 DONE 0.0s
+
+#5 [builder 1/4] FROM docker.io/library/openjdk:17-slim@sha256:aaa3b3cb27e3e520b8f116863d0580c438ed55ecfa0bc126b41f68c3f62f9774
+#5 resolve docker.io/library/openjdk:17-slim@sha256:aaa3b3cb27e3e520b8f116863d0580c438ed55ecfa0bc126b41f68c3f62f9774 done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 6.91kB done
+#6 DONE 0.0s
+
+#7 [builder 3/4] COPY . .
+#7 CACHED
+
+#8 [builder 4/4] RUN mkdir -p build/classes &&     javac -cp "lib/PostgreSQLDriver/*:lib/rs2xml.jar"           -d build/classes           $(find src -name "*.java") 2>&1 | grep -i error || true
+#8 CACHED
+
+#9 [stage-1 5/6] COPY --from=builder /build/lib ./lib/
+#9 CACHED
+
+#10 [stage-1 3/6] RUN apt-get update && apt-get install -y bash curl && rm -rf /var/lib/apt/lists/*
+#10 CACHED
+
+#11 [stage-1 4/6] COPY --from=builder /build/build/classes ./classes/
+#11 CACHED
+
+#12 [builder 2/4] WORKDIR /build
+#12 CACHED
+
+#13 [stage-1 2/6] WORKDIR /app
+#13 CACHED
+
+#14 [stage-1 6/6] RUN echo '#!/bin/bash\necho "E-Learning System starting..."\njava $JAVA_OPTS -cp "classes:lib/*" javasemesterproject.Main\n' > /app/start.sh && chmod +x /app/start.sh
+#14 CACHED
+
+#15 exporting to image
+#15 exporting layers done
+#15 exporting manifest sha256:0d03851de665ce36b17f709bb21014003e41d9ba064745ebe454b2c4d842f1d0 done
+#15 exporting config sha256:0f8c78514ccbaa69c53440531842198dce538acaeb7c6f6ee90f9a328207271c done
+#15 exporting attestation manifest sha256:b0ba8514db5759e56463a2a9807af729bb66717ec2b84881483c8d1a9234f224 done
+#15 exporting manifest list sha256:ab2a8dc59e44b1e464547bb51538f630cf558c7ad8750b8cc56a2750882de359 done
+#15 naming to docker.io/library/e-learning-system-java-gui-application-app:latest done
+#15 unpacking to docker.io/library/e-learning-system-java-gui-application-app:latest done
+#15 DONE 0.0s
+
+#16 resolving provenance for metadata file
+#16 DONE 0.0s
+ e-learning-system-java-gui-application-app  Built
+ Container elearning_app  Recreate
+ Container elearning_app  Recreated
+Attaching to elearning_app, elearning_postgres
+elearning_postgres  | initdb: unrecognized option: c
+elearning_postgres  | initdb: hint: Try "initdb --help" for more information.
+elearning_postgres  | initdb: unrecognized option: c
+elearning_postgres  | initdb: hint: Try "initdb --help" for more information.
+elearning_postgres  | initdb: unrecognized option: c
+elearning_postgres  | initdb: hint: Try "initdb --help" for more information.
+elearning_postgres  | initdb: unrecognized option: c
+elearning_postgres  | initdb: hint: Try "initdb --help" for more information.
+elearning_postgres  | initdb: unrecognized option: c
+elearning_postgres  | initdb: hint: Try "initdb --help" for more information.
+elearning_postgres  | initdb: unrecognized option: c
+elearning_postgres  | initdb: hint: Try "initdb --help" for more information.
+elearning_postgres  | initdb: unrecognized option: c
+elearning_postgres  | initdb: hint: Try "initdb --help" for more information.
+Gracefully Stopping... press Ctrl+C again to force
+dependency failed to start: container elearning_postgres is unhealthy
